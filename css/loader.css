@@ -1,0 +1,67 @@
+/* =====================================================================
+   CANITAS FELICES — loader.css
+   Pantalla de carga inicial. No estaba en la arquitectura original del
+   Sprint 1 (igual que contact.css) — se agrega como componente propio
+   en vez de mezclarse con styles.css, siguiendo ADR-002/ADR-003.
+   ===================================================================== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* por encima de navbar (900) y whatsapp-float (850) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+/* Estado de salida, activado por loader.js */
+.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.loader__logo {
+  animation: loaderPulse 1.6s ease-in-out infinite;
+}
+
+.loader__spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--color-sky-light);
+  border-top-color: var(--color-sky);
+  animation: loaderSpin 0.8s linear infinite;
+}
+
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* prefers-reduced-motion ya está cubierto globalmente en styles.css
+   (fuerza animation-duration/transition-duration casi a cero), por lo
+   que el spinner y el pulso quedan efectivamente estáticos sin
+   necesidad de una regla adicional aquí. */

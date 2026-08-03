@@ -1,0 +1,128 @@
+/* =====================================================================
+   CANITAS FELICES — lightbox.css
+   Modal de galería a pantalla completa. No estaba en la arquitectura
+   original (igual que contact.css/loader.css) — se agrega como
+   componente propio, siguiendo ADR-002/ADR-003. El overlay reutiliza
+   el mismo tono navy semitransparente ya definido como lineamiento
+   preventivo para modales en DESIGN_SYSTEM.md §10.6.
+   ===================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000; /* por encima de loader (2000), navbar (900) y flotantes (850) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.lightbox--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(27, 58, 87, 0.92);
+  z-index: 0;
+}
+
+/* --- Figura principal --- */
+.lightbox__figure {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  max-width: min(90vw, 1100px);
+  max-height: 80vh;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  cursor: zoom-in;
+  transition: transform var(--transition-base);
+}
+
+.lightbox__img--zoomed {
+  transform: scale(1.7);
+  cursor: zoom-out;
+}
+
+.lightbox__caption {
+  color: var(--color-white);
+  font-size: var(--fs-sm);
+  text-align: center;
+  max-width: 60ch;
+}
+
+.lightbox__counter {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+/* --- Botones de control (cerrar, anterior, siguiente) --- */
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+.lightbox__close {
+  top: var(--space-md);
+  right: var(--space-md);
+}
+
+.lightbox__nav--prev {
+  left: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__nav--prev:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox__nav--next {
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__nav--next:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* El outline claro sobre fondo oscuro se agregó a la regla compartida
+   en styles.css (§2), incluyendo explícitamente .lightbox — no hace
+   falta una regla adicional aquí. */

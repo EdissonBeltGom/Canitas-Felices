@@ -1,0 +1,121 @@
+/* =====================================================================
+   CANITAS FELICES — faq.css
+   Acordeón de preguntas frecuentes. Componente construido y listo para
+   usar (Sprint de funcionalidades JS), pendiente de que una página
+   defina su contenido real — no se agrega a index.html todavía (ver
+   docs/ROADMAP.md, Sprint 3: páginas internas).
+
+   Marcado esperado (ver también el comentario de cabecera en faq.js):
+
+   <div class="faq">
+     <div class="faq__item">
+       <h3 class="faq__question">
+         <button class="faq__trigger" aria-expanded="false" aria-controls="ID" id="TRIGGER_ID">
+           <span>Pregunta</span>
+           <span class="faq__icon" aria-hidden="true"></span>
+         </button>
+       </h3>
+       <div class="faq__panel" id="ID" role="region" aria-labelledby="TRIGGER_ID">
+         <div class="faq__panel-inner"><p>Respuesta</p></div>
+       </div>
+     </div>
+   </div>
+
+   Técnica de animación: grid-template-rows 0fr → 1fr (en vez de
+   max-height o medir con JS), soportada en las versiones actuales de
+   Chrome/Firefox/Safari/Edge que el proyecto ya declara como objetivo
+   de compatibilidad (docs/NFR.md §4).
+   ===================================================================== */
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  max-width: 46rem;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-gray-border);
+}
+
+.faq__question {
+  margin: 0;
+  font-family: var(--font-body); /* los triggers son controles de UI, no titulares editoriales */
+}
+
+.faq__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-xs);
+  text-align: left;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--color-navy);
+  transition: color var(--transition-fast);
+}
+
+.faq__trigger:hover {
+  color: var(--color-sky-dark);
+}
+
+/* --- Ícono +/- --- */
+.faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.faq__icon::before {
+  width: 14px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.faq__icon::after {
+  width: 2px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+}
+
+/* Estado abierto: la barra vertical desaparece (+ se convierte en -) */
+.faq__item.is-open .faq__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* --- Panel de respuesta --- */
+.faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-base);
+}
+
+.faq__item.is-open .faq__panel {
+  grid-template-rows: 1fr;
+}
+
+.faq__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faq__panel-inner p {
+  padding: 0 var(--space-xs) var(--space-md);
+  color: var(--color-navy-soft);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
