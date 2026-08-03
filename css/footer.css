@@ -1,0 +1,145 @@
+/* =====================================================================
+   CANITAS FELICES — footer.css
+   Pie de página con marca, enlaces rápidos, contacto y redes sociales.
+   ===================================================================== */
+
+.footer {
+  background-color: var(--color-navy);
+  color: rgba(255, 255, 255, 0.85);
+  padding-top: var(--space-2xl);
+}
+
+.footer__container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.2fr 1fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* --- Marca --- */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.footer__logo span {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.footer__tagline {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 26ch;
+  line-height: 1.6;
+}
+
+/* --- Encabezados de columna --- */
+.footer__heading {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+/* --- Enlaces rápidos --- */
+.footer__links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer__links a {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.footer__links a:hover {
+  color: var(--color-sky);
+  padding-left: 4px;
+}
+
+/* --- Contacto --- */
+.footer__contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer__contact li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer__contact a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color var(--transition-fast);
+}
+
+.footer__contact a:hover {
+  color: var(--color-sky);
+}
+
+.footer__contact img {
+  opacity: 0.85;
+  filter: brightness(0) invert(1);
+}
+
+/* --- Redes sociales --- */
+.footer__social-icons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.footer__social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer__social-icons a:hover {
+  background-color: var(--color-sky);
+  transform: translateY(-3px);
+}
+
+.footer__social-icons img {
+  filter: brightness(0) invert(1);
+}
+
+/* --- Línea inferior: derechos reservados --- */
+.footer__bottom {
+  padding-block: var(--space-md);
+  text-align: center;
+}
+
+.footer__bottom p {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.55);
+}

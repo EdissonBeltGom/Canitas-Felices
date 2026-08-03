@@ -1,0 +1,201 @@
+/* =====================================================================
+   CANITAS FELICES — contact.css
+   Formulario de contacto + marcador de posición del mapa.
+   Nota: este archivo no estaba en la arquitectura original del Sprint 1;
+   se agrega para no romper la regla de "un componente = un archivo CSS"
+   y mantener contact.css independiente de styles.css.
+   ===================================================================== */
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-lg);
+  align-items: stretch;
+}
+
+/* ---------------------------------------------------------------------
+   1. FORMULARIO
+   --------------------------------------------------------------------- */
+.contact__form {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form__label {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.form__input,
+.form__textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: var(--fs-sm);
+  color: var(--color-navy);
+  background-color: var(--color-gray-light);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: var(--color-navy-soft);
+  opacity: 0.6;
+}
+
+.form__input:focus,
+.form__textarea:focus {
+  outline: none;
+  border-color: var(--color-sky);
+  background-color: var(--color-white);
+}
+
+.form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Estados de validación (activados por app.js al enviar el formulario) */
+.form__group.is-invalid .form__input,
+.form__group.is-invalid .form__textarea {
+  border-color: #E0554F;
+  background-color: #FDEEED;
+}
+
+.form__error {
+  display: none;
+  font-size: var(--fs-xs);
+  color: #E0554F;
+}
+
+.form__group.is-invalid .form__error {
+  display: block;
+}
+
+.form__submit {
+  align-self: flex-start;
+  margin-top: var(--space-xs);
+  position: relative;
+}
+
+/* Estado de carga (activado por form.js mientras espera la respuesta
+   simulada/real del backend). Oculta el texto sin quitarlo del layout
+   (evita que el botón cambie de ancho) y muestra un spinner centrado. */
+.form__submit.is-loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.form__submit.is-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: var(--radius-full);
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
+  border-top-color: var(--color-white);
+  animation: formSubmitSpin 0.7s linear infinite;
+}
+
+@keyframes formSubmitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mensaje de confirmación tras un envío exitoso (mostrado/ocultado por app.js) */
+.form__success {
+  display: none;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-whatsapp-dark);
+  background-color: rgba(37, 211, 102, 0.1);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+}
+
+.form__success.is-visible {
+  display: flex;
+}
+
+/* Banner de error a nivel de formulario (distinto de los errores por
+   campo): se muestra cuando la llamada al backend falla, ver form.js. */
+.form__error-banner {
+  display: none;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: #b23b36;
+  background-color: #fdeeed;
+  border-left: 3px solid #e0554f;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+}
+
+.form__error-banner.is-visible {
+  display: flex;
+}
+
+/* ---------------------------------------------------------------------
+   2. MARCADOR DE POSICIÓN DEL MAPA
+   Reemplazar por el iframe/embed de Google Maps en una futura iteración.
+   --------------------------------------------------------------------- */
+.contact__map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 100%;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      var(--color-sky-light),
+      var(--color-sky-light) 12px,
+      #DCEEFA 12px,
+      #DCEEFA 24px
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact__map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact__map-placeholder p {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.contact__map-placeholder span {
+  font-size: var(--fs-xs);
+  color: var(--color-navy-soft);
+}

@@ -1,0 +1,255 @@
+/* =====================================================================
+   CANITAS FELICES — cards.css
+   Estilos de todas las tarjetas del sitio: why-card, service-card,
+   location-card y testimonial-card.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. WHY CARD — "¿Por qué elegir Canitas Felices?"
+   --------------------------------------------------------------------- */
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.why-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg) var(--space-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.why-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-sky-light);
+  margin-bottom: var(--space-md);
+}
+
+.why-card__title {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-xs);
+}
+
+.why-card__text {
+  font-size: var(--fs-sm);
+  color: var(--color-navy-soft);
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------
+   2. SERVICE CARD — Servicios
+   --------------------------------------------------------------------- */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.service-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+
+.service-card__image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.service-card:hover .service-card__image img {
+  transform: scale(1.08);
+}
+
+.service-card__body {
+  padding: var(--space-md);
+}
+
+.service-card__title {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-xs);
+}
+
+.service-card__text {
+  font-size: var(--fs-sm);
+  color: var(--color-navy-soft);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.service-card__link {
+  display: inline-block;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-sky-dark);
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.service-card__link:hover {
+  color: var(--color-navy);
+}
+
+/* ---------------------------------------------------------------------
+   3. LOCATION CARD — Sedes
+   --------------------------------------------------------------------- */
+.locations__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.location-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.location-card__image {
+  position: absolute;
+  inset: 0;
+}
+
+.location-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.location-card:hover .location-card__image img {
+  transform: scale(1.06);
+}
+
+.location-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27, 58, 87, 0) 40%, rgba(27, 58, 87, 0.85) 100%);
+  z-index: 1;
+}
+
+.location-card__body {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-lg);
+  color: var(--color-white);
+}
+
+.location-card__title {
+  font-size: var(--fs-xl);
+  color: var(--color-white);
+  margin-bottom: var(--space-xs);
+}
+
+.location-card__text {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: var(--space-md);
+  max-width: 34ch;
+}
+
+.location-card .btn--outline {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+}
+
+.location-card .btn--outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+  border-color: var(--color-white);
+}
+
+/* ---------------------------------------------------------------------
+   4. TESTIMONIAL CARD — Testimonios
+   --------------------------------------------------------------------- */
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.testimonial-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg) var(--space-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-card__rating {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.testimonial-card__text {
+  font-size: var(--fs-sm);
+  color: var(--color-navy-soft);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: var(--space-md);
+  flex-grow: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-gray-border);
+}
+
+.testimonial-card__avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.testimonial-card__name {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.testimonial-card__relation {
+  font-size: var(--fs-xs);
+  color: var(--color-navy-soft);
+}

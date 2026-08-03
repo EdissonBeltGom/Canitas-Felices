@@ -1,0 +1,196 @@
+/* =====================================================================
+   CANITAS FELICES — navbar.css
+   Navbar transparente sobre el hero; se vuelve sólida al hacer scroll
+   (la clase .navbar--scrolled la agrega navbar.js).
+   ===================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  z-index: 900;
+  background-color: transparent;
+  transition: background-color var(--transition-base), box-shadow var(--transition-base), height var(--transition-base);
+}
+
+.navbar__container {
+  max-width: var(--container-width);
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* --- Estado sólido, aplicado por JS cuando hay scroll --- */
+.navbar--scrolled {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  height: 72px;
+}
+
+/* --- Logotipo --- */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.navbar__logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transition: width var(--transition-base), height var(--transition-base);
+}
+
+.navbar--scrolled .navbar__logo-img {
+  width: 38px;
+  height: 38px;
+}
+
+.navbar__logo-text {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--color-white);
+  transition: color var(--transition-base);
+}
+
+.navbar--scrolled .navbar__logo-text {
+  color: var(--color-navy);
+}
+
+/* --- Menú de navegación --- */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navbar__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.navbar__link {
+  position: relative;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  padding-block: 0.4rem;
+  transition: color var(--transition-fast);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-sky);
+  transition: width var(--transition-fast);
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
+  width: 100%;
+}
+
+/* Enlace de la sección actualmente visible (scrollspy, ver navbar.js) */
+.navbar__link.is-active {
+  color: var(--color-sky);
+}
+
+.navbar--scrolled .navbar__link.is-active {
+  color: var(--color-sky-dark);
+}
+
+.navbar__link.is-active::after {
+  width: 100%;
+}
+
+.navbar--scrolled .navbar__link {
+  color: var(--color-navy);
+}
+
+.navbar--scrolled .navbar__link:hover {
+  color: var(--color-sky-dark);
+}
+
+/* --- Botón de WhatsApp en la navbar --- */
+.navbar__whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.navbar__whatsapp:hover {
+  background-color: var(--color-whatsapp-dark);
+  transform: translateY(-2px);
+}
+
+.navbar__whatsapp-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* --- Botón hamburguesa (oculto en escritorio, ver responsive.css) --- */
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.navbar__toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-base), transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.navbar--scrolled .navbar__toggle-bar {
+  background-color: var(--color-navy);
+}
+
+/* Estado abierto del ícono hamburguesa -> X (clase agregada por navbar.js) */
+.navbar__toggle.is-active .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__toggle.is-active .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__toggle.is-active .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Cuando navbar.js mueve el foco a una sección completa (navegación por
+   ancla accesible), se omite el outline nativo: el propósito es que Tab
+   continúe desde ahí, no ofrecer un control visualmente interactivo. */
+main section[tabindex="-1"]:focus {
+  outline: none;
+}

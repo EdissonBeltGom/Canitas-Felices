@@ -1,0 +1,136 @@
+/* =====================================================================
+   CANITAS FELICES — banner.css
+   Hero de pantalla completa con overlay para legibilidad del texto.
+   ===================================================================== */
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: 0;
+}
+
+.banner__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlay en degradado: más oscuro a la izquierda/abajo (donde va el texto),
+   más suave hacia arriba/derecha para no tapar del todo la fotografía */
+.banner__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(27, 58, 87, 0.82) 0%,
+      rgba(27, 58, 87, 0.62) 38%,
+      rgba(27, 58, 87, 0.28) 68%,
+      rgba(27, 58, 87, 0.12) 100%
+    );
+}
+
+.banner__content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-width);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.banner__eyebrow {
+  display: inline-block;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sky-light);
+  margin-bottom: var(--space-sm);
+}
+
+.banner__title {
+  font-size: clamp(var(--fs-3xl), 5vw, var(--fs-4xl));
+  color: var(--color-white);
+  max-width: 30ch;
+  margin-bottom: var(--space-md);
+}
+
+.banner__subtitle {
+  font-size: var(--fs-md);
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 42ch;
+  margin-bottom: var(--space-lg);
+  line-height: 1.7;
+}
+
+.banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* --- Indicador de scroll --- */
+.banner__scroll {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-full);
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+
+  /* Se suma a la secuencia de aparición progresiva del hero (ver
+     animations.css / .banner__eyebrow, .banner__title, etc.),
+     entrando último. */
+  opacity: 0;
+  animation-name: bannerScrollReveal;
+  animation-duration: var(--transition-slow);
+  animation-delay: 0.58s;
+  animation-fill-mode: forwards;
+}
+
+.banner__scroll-line {
+  width: 3px;
+  height: 8px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-full);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+
+@keyframes bannerScrollReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hogar Canitas Felices | Cuidado, calidez y confianza</title>
+  <meta name="description" content="Hogar Canitas Felices brinda atención 24 horas, personal capacitado y espacios seguros para adultos mayores. Conoce nuestras sedes La Pampa y Campestre, servicios y agenda una visita.">
+  <meta name="keywords" content="hogar geriátrico, cuidado de adultos mayores, residencia para adultos mayores, Hogar Canitas Felices, geriátrico, sede La Pampa, sede Campestre">
+  <meta name="author" content="Hogar Canitas Felices">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hogar Canitas Felices | Cuidado, calidez y confianza">
+  <meta property="og:description" content="Cuidado, calidez y confianza para quienes más amas. Conoce nuestras sedes y servicios.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/banner/banner.jpg">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fraunces: tipografía de titulares, cálida y elegante | Plus Jakarta Sans: tipografía de texto, clara y moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo: una por componente, nunca CSS embebido -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/banner.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Si JavaScript está deshabilitado, loader.js nunca podrá ocultar el
+       loader — este fallback evita que bloquee el contenido para siempre. -->
+  <noscript>
+    <style>#loader { display: none !important; }</style>
+  </noscript>
+</head>
+<body>
+
+  <!-- Loader: pantalla de carga inicial. Posicionado fixed con z-index alto,
+       su orden en el DOM no afecta el stacking visual; se deja después del
+       tag <body> pero antes del skip-link para que el skip-link siga siendo
+       el primer elemento realmente enfocable por teclado (el loader no
+       contiene ningún elemento interactivo). -->
+  <div id="loader" class="loader" role="status" aria-live="polite">
+    <div class="loader__content">
+      <img src="img/logo/logo.svg" alt="" class="loader__logo" width="56" height="56">
+      <span class="loader__spinner" aria-hidden="true"></span>
+      <span class="visually-hidden">Cargando Hogar Canitas Felices…</span>
+    </div>
+  </div>
+
+  <!-- Enlace de accesibilidad para saltar al contenido principal -->
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__container">
+      <a href="#inicio" class="navbar__logo" aria-label="Hogar Canitas Felices, ir al inicio">
+        <img src="img/logo/logo.svg" alt="Logotipo Hogar Canitas Felices" class="navbar__logo-img" width="48" height="48">
+        <span class="navbar__logo-text">Hogar Canitas Felices</span>
+      </a>
+
+      <button class="navbar__toggle" id="navbarToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navbarMenu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <nav class="navbar__menu" id="navbarMenu" aria-label="Navegación principal">
+        <ul class="navbar__list">
+          <li class="navbar__item"><a href="#inicio" class="navbar__link">Inicio</a></li>
+          <li class="navbar__item"><a href="#nosotros" class="navbar__link">Nosotros</a></li>
+          <li class="navbar__item"><a href="#servicios" class="navbar__link">Servicios</a></li>
+          <li class="navbar__item"><a href="#sedes" class="navbar__link">Instalaciones</a></li>
+          <li class="navbar__item"><a href="#galeria" class="navbar__link">Galería</a></li>
+          <li class="navbar__item"><a href="#faq" class="navbar__link">Preguntas</a></li>
+          <li class="navbar__item"><a href="#contacto" class="navbar__link">Contacto</a></li>
+        </ul>
+        <a
+          href="https://wa.me/573002258378?text=Hola%20Hogar%20Canitas%20Felices%2C%20quisiera%20más%20información"
+          data-whatsapp-template="default"
+          class="navbar__whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Escríbenos por WhatsApp"
+        >
+          <img src="img/iconos/whatsapp.svg" alt="" class="navbar__whatsapp-icon" width="20" height="20">
+          WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+
+    <!-- ===================== HERO BANNER ===================== -->
+    <section class="banner" id="inicio">
+      <!--
+        Preparado para un futuro slider (Sprint solicitado: "posibilidad
+        futura de incorporar un slider sin modificar la arquitectura"):
+        .banner__img es hoy una sola imagen de fondo. Un slider futuro
+        solo necesitaría reemplazar este <img> por varios elementos
+        `.banner__slide` (misma posición absolute/inset:0, cross-fade por
+        opacity) controlados por un banner-slider.js nuevo — sin tocar
+        .banner__overlay, .banner__content ni ningún otro componente.
+        No se implementa ahora (no hay necesidad real todavía) para no
+        sobre-construir; ver PROJECT.md, principio 5.
+      -->
+      <img src="img/banner/banner.jpg" alt="Adulto mayor sonriente acompañado de un cuidador de Hogar Canitas Felices en un jardín soleado" class="banner__img">
+      <div class="banner__overlay"></div>
+      <div class="banner__content">
+        <p class="banner__eyebrow">Hogar geriátrico en Colombia</p>
+        <h1 class="banner__title">Cuidado, calidez y confianza para quienes más amas</h1>
+        <p class="banner__subtitle">Acompañamos a tus adultos mayores con atención profesional las 24 horas del día, en un entorno familiar, seguro y lleno de bienestar.</p>
+        <div class="banner__actions">
+          <a href="#contacto" class="btn btn--primary">Agendar visita</a>
+          <a
+            href="https://wa.me/573002258378?text=Hola%20Hogar%20Canitas%20Felices%2C%20quisiera%20agendar%20una%20visita"
+            data-whatsapp-template="visita"
+            class="btn btn--whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="img/iconos/whatsapp.svg" alt="" class="btn__icon" width="20" height="20">
+            Escríbenos por WhatsApp
+          </a>
+        </div>
+      </div>
+      <a href="#nosotros" class="banner__scroll" aria-label="Desplázate hacia abajo">
+        <span class="banner__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===================== ¿POR QUÉ ELEGIRNOS? ===================== -->
+    <section class="why" id="nosotros">
+      <div class="section__container">
+        <p class="section__eyebrow">Nosotros</p>
+        <h2 class="section__title">¿Por qué elegir Hogar Canitas Felices?</h2>
+        <p class="section__description">Más de una década acompañando familias, con un equipo humano dedicado a que cada residente viva esta etapa con dignidad, alegría y tranquilidad.</p>
+
+        <div class="why__grid">
+          <article class="why-card" data-animate="fade-up" data-animate-delay="1">
+            <div class="why-card__icon">
+              <img src="img/iconos/reloj-24h.svg" alt="" width="40" height="40">
+            </div>
+            <h3 class="why-card__title">Atención 24 horas</h3>
+            <p class="why-card__text">Personal médico y de enfermería disponible en todo momento, todos los días del año.</p>
+          </article>
+
+          <article class="why-card" data-animate="fade-up" data-animate-delay="2">
+            <div class="why-card__icon">
+              <img src="img/iconos/personal-capacitado.svg" alt="" width="40" height="40">
+            </div>
+            <h3 class="why-card__title">Personal capacitado</h3>
+            <p class="why-card__text">Equipo interdisciplinario certificado en geriatría, enfermería y terapias especializadas.</p>
+          </article>
+
+          <article class="why-card" data-animate="fade-up" data-animate-delay="3">
+            <div class="why-card__icon">
+              <img src="img/iconos/ambiente-familiar.svg" alt="" width="40" height="40">
+            </div>
+            <h3 class="why-card__title">Ambiente familiar</h3>
+            <p class="why-card__text">Espacios cálidos y actividades pensadas para que cada residente se sienta como en casa.</p>
+          </article>
+
+          <article class="why-card" data-animate="fade-up" data-animate-delay="4">
+            <div class="why-card__icon">
+              <img src="img/iconos/espacios-seguros.svg" alt="" width="40" height="40">
+            </div>
+            <h3 class="why-card__title">Espacios seguros</h3>
+            <p class="why-card__text">Instalaciones adaptadas y protocolos de seguridad diseñados para el bienestar de los adultos mayores.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICIOS ===================== -->
+    <section class="services" id="servicios">
+      <div class="section__container">
+        <p class="section__eyebrow">Servicios</p>
+        <h2 class="section__title">Un cuidado integral, pensado para cada etapa</h2>
+        <p class="section__description">Combinamos atención médica, bienestar emocional y actividades diarias para una vida plena.</p>
+
+        <div class="services__grid">
+          <article class="service-card" data-animate="fade-up" data-animate-delay="1">
+            <div class="service-card__image">
+              <img src="img/servicios/atencion-permanente.jpg" alt="Cuidador acompañando a un adulto mayor en pasillo del geriátrico" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">Atención permanente</h3>
+              <p class="service-card__text">Supervisión continua para garantizar la seguridad y tranquilidad de cada residente.</p>
+              <a href="#contacto" class="service-card__link">Más información →</a>
+            </div>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="2">
+            <div class="service-card__image">
+              <img src="img/servicios/enfermeria.jpg" alt="Enfermera tomando signos vitales a un residente" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">Enfermería</h3>
+              <p class="service-card__text">Control de signos vitales, administración de medicamentos y curaciones a cargo de personal certificado.</p>
+              <a href="#contacto" class="service-card__link">Más información →</a>
+            </div>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="3">
+            <div class="service-card__image">
+              <img src="img/servicios/alimentacion.jpg" alt="Plato de comida balanceada preparado para un residente" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">Alimentación</h3>
+              <p class="service-card__text">Menús balanceados y personalizados, diseñados junto a nutricionistas para cada necesidad.</p>
+              <a href="#contacto" class="service-card__link">Más información →</a>
+            </div>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="4">
+            <div class="service-card__image">
+              <img src="img/servicios/terapias.jpg" alt="Terapeuta realizando ejercicios de movilidad con un residente" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">Terapias</h3>
+              <p class="service-card__text">Fisioterapia, terapia ocupacional y estimulación cognitiva para mantener la autonomía.</p>
+              <a href="#contacto" class="service-card__link">Más información →</a>
+            </div>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="5">
+            <div class="service-card__image">
+              <img src="img/servicios/actividades-recreativas.jpg" alt="Grupo de residentes participando en una actividad recreativa" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">Actividades recreativas</h3>
+              <p class="service-card__text">Manualidades, música, juegos y salidas que fomentan la alegría y la vida social.</p>
+              <a href="#contacto" class="service-card__link">Más información →</a>
+            </div>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="6">
+            <div class="service-card__image">
+              <img src="img/servicios/habitaciones.jpg" alt="Habitación cómoda y luminosa para residentes" loading="lazy">
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">Habitaciones</h3>
+              <p class="service-card__text">Espacios individuales y compartidos, cómodos, luminosos y adaptados para adultos mayores.</p>
+              <a href="#contacto" class="service-card__link">Más información →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SEDES ===================== -->
+    <section class="locations" id="sedes">
+      <div class="section__container">
+        <p class="section__eyebrow">Instalaciones</p>
+        <h2 class="section__title">Nuestras sedes</h2>
+        <p class="section__description">Dos espacios diseñados con el mismo propósito: brindar bienestar, seguridad y calidez.</p>
+
+        <div class="locations__grid">
+          <article class="location-card" data-animate="fade-left">
+            <div class="location-card__image">
+              <img src="img/sedes/la-pampa/fachada.jpg" alt="Fachada de la sede La Pampa de Hogar Canitas Felices" loading="lazy">
+            </div>
+            <div class="location-card__body">
+              <h3 class="location-card__title">Sede La Pampa</h3>
+              <p class="location-card__text">Amplios jardines y espacios abiertos, ideales para residentes que disfrutan del contacto con la naturaleza.</p>
+              <a href="#galeria" class="btn btn--outline" data-location="la-pampa">Conocer instalaciones</a>
+            </div>
+          </article>
+
+          <article class="location-card" data-animate="fade-right">
+            <div class="location-card__image">
+              <img src="img/sedes/campestre/fachada.jpg" alt="Fachada de la sede Campestre de Hogar Canitas Felices" loading="lazy">
+            </div>
+            <div class="location-card__body">
+              <h3 class="location-card__title">Sede Campestre</h3>
+              <p class="location-card__text">Ambiente tranquilo y campestre, pensado para el descanso y la vida en comunidad.</p>
+              <a href="#galeria" class="btn btn--outline" data-location="campestre">Conocer instalaciones</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALERÍA ===================== -->
+    <section class="gallery" id="galeria">
+      <div class="section__container">
+        <p class="section__eyebrow">Galería</p>
+        <h2 class="section__title">Conoce nuestros espacios</h2>
+        <p class="section__description">Selecciona una sede para ver sus instalaciones.</p>
+
+        <div class="gallery__tabs" role="tablist" aria-label="Selector de sede">
+          <button
+            class="gallery__tab is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="gallery-grid"
+            data-gallery="la-pampa"
+            id="tab-la-pampa"
+          >
+            Sede La Pampa
+          </button>
+          <button
+            class="gallery__tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="gallery-grid"
+            data-gallery="campestre"
+            id="tab-campestre"
+          >
+            Sede Campestre
+          </button>
+        </div>
+
+        <div class="gallery__grid" id="gallery-grid" role="tabpanel" aria-labelledby="tab-la-pampa">
+          <!-- Las imágenes se inyectan dinámicamente desde gallery.js según la sede seleccionada -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIOS ===================== -->
+    <section class="testimonials" id="testimonios">
+      <div class="section__container">
+        <p class="section__eyebrow">Testimonios</p>
+        <h2 class="section__title">Lo que dicen las familias</h2>
+
+        <div class="testimonials__grid">
+          <article class="testimonial-card" data-animate="fade-up" data-animate-delay="1">
+            <div class="testimonial-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+            </div>
+            <p class="testimonial-card__text">"Desde que mi madre llegó a Hogar Canitas Felices, la notamos más tranquila y feliz. El personal es muy cálido y siempre nos mantiene informados."</p>
+            <div class="testimonial-card__author">
+              <img src="img/testimonios/maria-gonzalez.jpg" alt="Fotografía de María González" class="testimonial-card__avatar" loading="lazy">
+              <div>
+                <p class="testimonial-card__name">María González</p>
+                <p class="testimonial-card__relation">Hija de residente</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate="fade-up" data-animate-delay="2">
+            <div class="testimonial-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+            </div>
+            <p class="testimonial-card__text">"La atención médica es excelente y las instalaciones son impecables. Mi padre participa en las actividades y se le ve muy contento."</p>
+            <div class="testimonial-card__author">
+              <img src="img/testimonios/carlos-ramirez.jpg" alt="Fotografía de Carlos Ramírez" class="testimonial-card__avatar" loading="lazy">
+              <div>
+                <p class="testimonial-card__name">Carlos Ramírez</p>
+                <p class="testimonial-card__relation">Hijo de residente</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate="fade-up" data-animate-delay="3">
+            <div class="testimonial-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+              <img src="img/iconos/estrella.svg" alt="" width="18" height="18">
+            </div>
+            <p class="testimonial-card__text">"Elegimos Hogar Canitas Felices por las recomendaciones y hoy podemos confirmar que fue la mejor decisión para el cuidado de mi abuela."</p>
+            <div class="testimonial-card__author">
+              <img src="img/testimonios/laura-torres.jpg" alt="Fotografía de Laura Torres" class="testimonial-card__avatar" loading="lazy">
+              <div>
+                <p class="testimonial-card__name">Laura Torres</p>
+                <p class="testimonial-card__relation">Nieta de residente</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PREGUNTAS FRECUENTES =====================
+         Contenido de referencia: estas 6 preguntas y respuestas son un
+         punto de partida razonable para un hogar geriátrico, pero deben
+         ser revisadas y ajustadas por el negocio antes de producción
+         (mismo criterio ya aplicado a las imágenes del Sprint 1). -->
+    <section class="faq-section" id="faq">
+      <div class="section__container">
+        <p class="section__eyebrow">Preguntas frecuentes</p>
+        <h2 class="section__title">Resolvemos tus dudas</h2>
+        <p class="section__description">Si no encuentras la respuesta que buscas, escríbenos por WhatsApp y con gusto te ayudamos.</p>
+
+        <div class="faq" data-animate="fade-up">
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button type="button" class="faq__trigger" aria-expanded="false" aria-controls="faq-answer-1" id="faq-trigger-1">
+                <span>¿Qué tipo de cuidados ofrecen a los residentes?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-answer-1" role="region" aria-labelledby="faq-trigger-1">
+              <div class="faq__panel-inner">
+                <p>Ofrecemos atención médica y de enfermería las 24 horas, apoyo con actividades diarias, alimentación balanceada, fisioterapia, terapia ocupacional y estimulación cognitiva. Cada plan de cuidado se adapta a las necesidades particulares de cada residente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button type="button" class="faq__trigger" aria-expanded="false" aria-controls="faq-answer-2" id="faq-trigger-2">
+                <span>¿Puedo visitar a mi familiar en cualquier momento?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-answer-2" role="region" aria-labelledby="faq-trigger-2">
+              <div class="faq__panel-inner">
+                <p>Sí, tenemos horarios de visita flexibles pensados para que las familias mantengan un contacto cercano y constante. Te recomendamos coordinar con anticipación para asegurar una visita cómoda tanto para ti como para tu ser querido.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button type="button" class="faq__trigger" aria-expanded="false" aria-controls="faq-answer-3" id="faq-trigger-3">
+                <span>¿Qué documentos necesito para el proceso de ingreso?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-answer-3" role="region" aria-labelledby="faq-trigger-3">
+              <div class="faq__panel-inner">
+                <p>Generalmente solicitamos documento de identidad, historia clínica reciente, carnet de EPS o seguro médico, y una valoración inicial del estado de salud. Nuestro equipo te acompaña durante todo el proceso para que sea lo más simple posible.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button type="button" class="faq__trigger" aria-expanded="false" aria-controls="faq-answer-4" id="faq-trigger-4">
+                <span>¿Tienen atención médica las 24 horas?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-answer-4" role="region" aria-labelledby="faq-trigger-4">
+              <div class="faq__panel-inner">
+                <p>Sí, contamos con personal de enfermería y supervisión médica permanente, los 365 días del año, para responder ante cualquier necesidad de nuestros residentes en el momento en que surja.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button type="button" class="faq__trigger" aria-expanded="false" aria-controls="faq-answer-5" id="faq-trigger-5">
+                <span>¿Cómo puedo agendar una visita a las instalaciones?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-answer-5" role="region" aria-labelledby="faq-trigger-5">
+              <div class="faq__panel-inner">
+                <p>Puedes escribirnos por WhatsApp o llenar el formulario de contacto de esta página, indicando qué sede te interesa conocer. Te contactaremos para coordinar el día y la hora que mejor te convenga.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button type="button" class="faq__trigger" aria-expanded="false" aria-controls="faq-answer-6" id="faq-trigger-6">
+                <span>¿Qué diferencia hay entre la Sede La Pampa y la Sede Campestre?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-answer-6" role="region" aria-labelledby="faq-trigger-6">
+              <div class="faq__panel-inner">
+                <p>La Sede La Pampa se distingue por sus amplios jardines y espacios abiertos, ideal para quienes disfrutan del contacto con la naturaleza. La Sede Campestre ofrece un ambiente más tranquilo y campestre, pensado para el descanso y la vida en comunidad. Ambas comparten el mismo estándar de cuidado y calidez.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACTO ===================== -->
+    <section class="contact" id="contacto">
+      <div class="section__container">
+        <p class="section__eyebrow">Contacto</p>
+        <h2 class="section__title">Agenda tu visita</h2>
+        <p class="section__description">Cuéntanos sobre tu ser querido y con gusto te asesoraremos sin ningún compromiso.</p>
+
+        <div class="contact__grid">
+          <form class="contact__form" id="contactForm" novalidate data-animate="fade-left">
+            <div class="form__group">
+              <label for="nombre" class="form__label">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Escribe tu nombre completo" required autocomplete="name" aria-describedby="error-nombre">
+              <span class="form__error" id="error-nombre">Por favor escribe tu nombre.</span>
+            </div>
+
+            <div class="form__group">
+              <label for="correo" class="form__label">Correo</label>
+              <input type="email" id="correo" name="correo" class="form__input" placeholder="tucorreo@ejemplo.com" required autocomplete="email" aria-describedby="error-correo">
+              <span class="form__error" id="error-correo">Por favor escribe un correo válido.</span>
+            </div>
+
+            <div class="form__group">
+              <label for="telefono" class="form__label">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" class="form__input" placeholder="Ej. 300 000 0000" required autocomplete="tel" aria-describedby="error-telefono">
+              <span class="form__error" id="error-telefono">Por favor escribe un teléfono válido.</span>
+            </div>
+
+            <div class="form__group">
+              <label for="mensaje" class="form__label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" class="form__textarea" rows="5" placeholder="Cuéntanos en qué podemos ayudarte" required aria-describedby="error-mensaje"></textarea>
+              <span class="form__error" id="error-mensaje">Por favor escribe tu mensaje.</span>
+            </div>
+
+            <button type="submit" class="btn btn--primary form__submit" id="formSubmit">Enviar mensaje</button>
+
+            <p class="form__success" id="formSuccess" role="status">
+              <img src="img/iconos/check.svg" alt="" width="18" height="18">
+              ¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.
+            </p>
+
+            <p class="form__error-banner" id="formError" role="alert">
+              No pudimos enviar tu mensaje. Intenta nuevamente o escríbenos por WhatsApp.
+            </p>
+          </form>
+
+          <div class="contact__map" role="img" aria-label="Marcador de posición del mapa de ubicación" data-animate="fade-right">
+            <!-- Marcador temporal: reemplazar por el iframe de Google Maps en una futura iteración -->
+            <div class="contact__map-placeholder">
+              <img src="img/iconos/mapa-pin.svg" alt="" width="40" height="40">
+              <p>Mapa de ubicación</p>
+              <span>Próximamente: integración con Google Maps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <a href="#inicio" class="footer__logo">
+          <img src="img/logo/logo-blanco.svg" alt="Logotipo Hogar Canitas Felices" width="48" height="48">
+          <span>Hogar Canitas Felices</span>
+        </a>
+        <p class="footer__tagline">Cuidado, calidez y confianza para quienes más amas.</p>
+      </div>
+
+      <nav class="footer__links" aria-label="Enlaces rápidos">
+        <h3 class="footer__heading">Enlaces rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sedes">Instalaciones</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Contacto</h3>
+        <ul>
+          <li>
+            <a href="tel:+573002258378">
+              <img src="img/iconos/telefono.svg" alt="" width="16" height="16"> +57 300 225 8378
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contacto@canitasfelices.com">
+              <img src="img/iconos/correo.svg" alt="" width="16" height="16"> contacto@canitasfelices.com
+            </a>
+          </li>
+          <li>
+            <img src="img/iconos/ubicacion.svg" alt="" width="16" height="16"> Sede La Pampa y Sede Campestre
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer__social">
+        <h3 class="footer__heading">Síguenos</h3>
+        <div class="footer__social-icons">
+          <a href="#" aria-label="Facebook de Hogar Canitas Felices" target="_blank" rel="noopener noreferrer">
+            <img src="img/iconos/facebook.svg" alt="" width="22" height="22">
+          </a>
+          <a href="#" aria-label="Instagram de Hogar Canitas Felices" target="_blank" rel="noopener noreferrer">
+            <img src="img/iconos/instagram.svg" alt="" width="22" height="22">
+          </a>
+          <a href="https://wa.me/573002258378" data-whatsapp-template="plano" aria-label="WhatsApp de Hogar Canitas Felices" target="_blank" rel="noopener noreferrer">
+            <img src="img/iconos/whatsapp.svg" alt="" width="22" height="22">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span id="currentYear"></span> Hogar Canitas Felices. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a
+    href="https://wa.me/573002258378?text=Hola%20Hogar%20Canitas%20Felices%2C%20quisiera%20más%20información"
+    data-whatsapp-template="default"
+    class="whatsapp-float"
+    id="whatsappFloat"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Escríbenos por WhatsApp"
+  >
+    <span class="whatsapp-float__tooltip" aria-hidden="true">Escríbenos por WhatsApp</span>
+    <img src="img/iconos/whatsapp.svg" alt="" width="28" height="28">
+  </a>
+
+  <!-- Botón flotante para volver arriba: esquina opuesta al de WhatsApp
+       para que nunca se superpongan entre sí. -->
+  <button
+    type="button"
+    class="scroll-top"
+    id="scrollTop"
+    aria-label="Volver arriba"
+  >
+    <img src="img/iconos/flecha-arriba.svg" alt="" width="22" height="22">
+  </button>
+
+  <!-- Scripts: separados por responsabilidad, cargados al final para no bloquear el renderizado -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/loader.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+  <script src="js/lightbox.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/whatsapp.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/faq.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

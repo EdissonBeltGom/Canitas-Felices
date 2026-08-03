@@ -1,0 +1,412 @@
+/* =====================================================================
+   CANITAS FELICES — styles.css
+   Hoja base: variables de diseño, reset, tipografía y utilidades globales.
+   Los estilos específicos de cada componente viven en su propio archivo
+   (navbar.css, banner.css, cards.css, gallery.css, footer.css, etc.)
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. VARIABLES DE DISEÑO (Design Tokens)
+   --------------------------------------------------------------------- */
+:root {
+  /* Paleta principal */
+  --color-sky: #4FA8DE;          /* Azul cielo — color de marca */
+  --color-sky-light: #E8F4FC;    /* Azul cielo muy claro — fondos suaves */
+  --color-sky-dark: #2E7DB8;     /* Azul cielo oscurecido — hover/estados */
+  --color-white: #FFFFFF;
+
+  /* Colores de apoyo */
+  --color-navy: #1B3A57;         /* Azul oscuro — texto principal, navbar sólida */
+  --color-navy-soft: #3D5A76;    /* Azul oscuro suavizado — texto secundario */
+  --color-gray-light: #F4F7FA;   /* Gris muy claro — fondos alternos de sección */
+  --color-gray-border: #DDE6ED;  /* Bordes y divisores sutiles */
+  --color-whatsapp: #25D366;     /* Verde — exclusivo para acciones de WhatsApp */
+  --color-whatsapp-dark: #1EBA59;
+  --color-star: #F5B942;         /* Dorado cálido — calificaciones */
+
+  /* Tipografía */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Escala tipográfica */
+  --fs-xs: 0.8125rem;   /* 13px */
+  --fs-sm: 0.9375rem;   /* 15px */
+  --fs-base: 1rem;      /* 16px */
+  --fs-md: 1.125rem;    /* 18px */
+  --fs-lg: 1.375rem;    /* 22px */
+  --fs-xl: 1.75rem;     /* 28px */
+  --fs-2xl: 2.25rem;    /* 36px */
+  --fs-3xl: 3rem;       /* 48px */
+  --fs-4xl: 3.75rem;    /* 60px */
+
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Layout */
+  --container-width: 1200px;
+  --container-padding: clamp(1.25rem, 4vw, 3rem);
+
+  /* Bordes y sombras */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-full: 999px;
+  --shadow-sm: 0 2px 8px rgba(27, 58, 87, 0.06);
+  --shadow-md: 0 8px 24px rgba(27, 58, 87, 0.10);
+  --shadow-lg: 0 20px 48px rgba(27, 58, 87, 0.16);
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s ease;
+  --transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Altura de referencia de la navbar (usada por banner y scripts de scroll) */
+  --navbar-height: 84px;
+}
+
+/* ---------------------------------------------------------------------
+   2. RESET Y BASE
+   --------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  color: var(--color-navy);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+/* Respeta la preferencia de movimiento reducido del usuario */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Estado de foco visible para navegación por teclado (accesibilidad) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-sky-dark);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Sobre fondos oscuros (hero, tarjetas de sede, footer, lightbox) el
+   outline azul oscuro por defecto pierde contraste contra el propio
+   fondo (ambos son tonos de azul similares) — se usa blanco en su lugar. */
+.banner :focus-visible,
+.location-card :focus-visible,
+.footer :focus-visible,
+.lightbox :focus-visible {
+  outline-color: var(--color-white);
+}
+
+/* Enlace "saltar al contenido" — visible solo al enfocarse con teclado */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-sm);
+  z-index: 1000;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* ---------------------------------------------------------------------
+   3. LAYOUT / CONTENEDORES
+   --------------------------------------------------------------------- */
+.section__container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+section {
+  padding-block: var(--space-2xl);
+}
+
+/* ---------------------------------------------------------------------
+   4. TIPOGRAFÍA DE SECCIÓN (reutilizable en Servicios, Sedes, Galería...)
+   --------------------------------------------------------------------- */
+.section__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sky-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.section__title {
+  font-size: clamp(var(--fs-2xl), 3.2vw, var(--fs-3xl));
+  color: var(--color-navy);
+  max-width: 42rem;
+  margin-bottom: var(--space-sm);
+}
+
+.section__description {
+  font-size: var(--fs-md);
+  color: var(--color-navy-soft);
+  max-width: 38rem;
+  margin-bottom: var(--space-lg);
+}
+
+/* Secciones con fondo alterno para crear ritmo visual al hacer scroll */
+.why,
+.locations,
+.testimonials {
+  background-color: var(--color-gray-light);
+}
+
+/* ---------------------------------------------------------------------
+   5. BOTONES (utilidades compartidas por banner, cards y contacto)
+   --------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.9rem 1.75rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-sky);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-sky-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-gray-border);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-sky);
+  color: var(--color-sky-dark);
+  transform: translateY(-2px);
+}
+
+.btn--whatsapp {
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--whatsapp:hover {
+  background-color: var(--color-whatsapp-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn__icon {
+  filter: brightness(0) invert(1);
+}
+
+/* ---------------------------------------------------------------------
+   6. BOTÓN FLOTANTE DE WHATSAPP
+   Nota: la animación de pulso (@keyframes whatsappPulse) vive en
+   animations.css; aquí solo va la apariencia y posición base.
+   La visibilidad la controla whatsapp.js alternando
+   .whatsapp-float--visible según el scroll.
+   --------------------------------------------------------------------- */
+.whatsapp-float {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: 850;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-whatsapp);
+  box-shadow: var(--shadow-lg);
+
+  /* Oculto por defecto: whatsapp.js lo revela al salir del Hero */
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base), background-color var(--transition-fast);
+}
+
+.whatsapp-float img {
+  filter: brightness(0) invert(1);
+}
+
+.whatsapp-float:hover {
+  background-color: var(--color-whatsapp-dark);
+}
+
+/* Tooltip: CSS puro (no depende de whatsapp.js para mostrarse/ocultarse),
+   funciona incluso si JavaScript falla. El texto ya existe de forma
+   accesible en el aria-label del enlace; este span es refuerzo visual,
+   por eso aria-hidden="true". */
+.whatsapp-float__tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.whatsapp-float:hover .whatsapp-float__tooltip,
+.whatsapp-float:focus-visible .whatsapp-float__tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.whatsapp-float--visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------
+   6b. BOTÓN FLOTANTE — VOLVER ARRIBA
+   Mismo patrón que .whatsapp-float (oculto por defecto, revelado por
+   scroll.js), en la esquina opuesta para no superponerse nunca entre sí.
+   Es un botón secundario (48px vs. 60px de WhatsApp) porque su acción
+   es de conveniencia, no la conversión principal del sitio.
+   --------------------------------------------------------------------- */
+.scroll-top {
+  position: fixed;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  z-index: 850;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-gray-border);
+  box-shadow: var(--shadow-md);
+
+  /* Oculto por defecto: scroll.js lo revela al salir del Hero */
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base), border-color var(--transition-fast);
+}
+
+.scroll-top:hover {
+  border-color: var(--color-sky);
+  transform: translateY(-2px);
+}
+
+.scroll-top--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------
+   7. UTILIDADES GENERALES
+   --------------------------------------------------------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

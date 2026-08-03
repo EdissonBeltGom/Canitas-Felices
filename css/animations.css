@@ -1,0 +1,143 @@
+/* =====================================================================
+   CANITAS FELICES — animations.css
+   Animaciones de entrada al hacer scroll. animations.js usa
+   IntersectionObserver para agregar la clase .is-visible a los
+   elementos con [data-animate] cuando entran en el viewport.
+   Todo respeta prefers-reduced-motion (regla global en styles.css).
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. ESTADO INICIAL (antes de entrar al viewport)
+
+   --animate-duration y --animate-delay son variables CSS que
+   animations.js escribe inline por elemento cuando existen los
+   atributos data-duration / data-delay (valores en ms, libres — no
+   limitados a los pasos fijos de data-animate-delay de la sección 3).
+   Si no se especifican, caen al valor por defecto del design system.
+   --------------------------------------------------------------------- */
+[data-animate] {
+  opacity: 0;
+  transition:
+    opacity var(--animate-duration, var(--transition-slow)),
+    transform var(--animate-duration, var(--transition-slow)),
+    clip-path var(--animate-duration, var(--transition-slow));
+  transition-delay: var(--animate-delay, 0s);
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(32px);
+}
+
+[data-animate="fade-in"] {
+  transform: none;
+}
+
+[data-animate="fade-left"] {
+  transform: translateX(-32px);
+}
+
+[data-animate="fade-right"] {
+  transform: translateX(32px);
+}
+
+[data-animate="zoom-in"] {
+  transform: scale(0.94);
+}
+
+/* "scale": efecto más marcado y "elástico" que zoom-in — pensado para
+   elementos puntuales que quieren llamar la atención (ej. un ícono
+   destacado), no para grupos de tarjetas. */
+[data-animate="scale"] {
+  transform: scale(0.7);
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* "reveal": cortina que se abre de izquierda a derecha mediante
+   clip-path, en vez de opacidad/transform. Técnica distinta a las
+   demás variantes — útil para títulos o imágenes con un efecto más
+   editorial. */
+[data-animate="reveal"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* ---------------------------------------------------------------------
+   2. ESTADO VISIBLE (clase agregada por animations.js)
+   --------------------------------------------------------------------- */
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---------------------------------------------------------------------
+   3. RETRASO ESCALONADO PARA GRUPOS DE TARJETAS
+   Se aplica junto con [data-animate] en elementos que se listan uno
+   tras otro (why-card, service-card, testimonial-card, etc.)
+
+   Nota de precedencia: si un elemento combina data-animate-delay (pasos
+   fijos de esta sección) con data-delay (ms libres, sección 1), este
+   sistema de pasos fijos tiene prioridad en la cascada por ir después
+   en el archivo. Se recomienda usar uno u otro por elemento, no ambos.
+   --------------------------------------------------------------------- */
+[data-animate-delay="1"] { transition-delay: 0.08s; }
+[data-animate-delay="2"] { transition-delay: 0.16s; }
+[data-animate-delay="3"] { transition-delay: 0.24s; }
+[data-animate-delay="4"] { transition-delay: 0.32s; }
+[data-animate-delay="5"] { transition-delay: 0.4s; }
+[data-animate-delay="6"] { transition-delay: 0.48s; }
+
+/* ---------------------------------------------------------------------
+   4. ANIMACIÓN DE ENTRADA DE PÁGINA (hero)
+   Se ejecuta una sola vez al cargar, no depende del scroll.
+   ---------------------------------------------------------------------- */
+.banner__eyebrow,
+.banner__title,
+.banner__subtitle,
+.banner__actions {
+  opacity: 0;
+  animation: heroReveal var(--transition-slow) forwards;
+}
+
+.banner__eyebrow { animation-delay: 0.1s; }
+.banner__title { animation-delay: 0.22s; }
+.banner__subtitle { animation-delay: 0.34s; }
+.banner__actions { animation-delay: 0.46s; }
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   5. PULSO SUAVE PARA EL BOTÓN FLOTANTE DE WHATSAPP
+   Llama la atención sin ser invasivo; whatsapp.js puede pausarlo
+   agregando .whatsapp-float--static si se prefiere quieto.
+   --------------------------------------------------------------------- */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-float--visible {
+  animation: whatsappPulse 2.6s ease-out infinite;
+}
+
+.whatsapp-float--static {
+  animation: none;
+}

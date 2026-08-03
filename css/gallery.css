@@ -1,0 +1,128 @@
+/* =====================================================================
+   CANITAS FELICES — gallery.css
+   Tabs para alternar entre sedes + grid de fotografías.
+   El cambio de contenido lo controla gallery.js (agrega/quita .is-active
+   y reconstruye el contenido de #gallery-grid).
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. TABS DE SELECCIÓN DE SEDE
+   --------------------------------------------------------------------- */
+.gallery__tabs {
+  display: inline-flex;
+  gap: 0.4rem;
+  background-color: var(--color-gray-light);
+  border-radius: var(--radius-full);
+  padding: 0.4rem;
+  margin-bottom: var(--space-lg);
+}
+
+.gallery__tab {
+  padding: 0.65rem 1.5rem;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-navy-soft);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.gallery__tab:hover {
+  color: var(--color-navy);
+}
+
+.gallery__tab.is-active {
+  background-color: var(--color-sky);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------------------------------------------------------------------
+   2. GRID DE FOTOGRAFÍAS
+   --------------------------------------------------------------------- */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: var(--space-sm);
+}
+
+/* Mosaico: algunas imágenes ocupan más espacio para dar variedad visual,
+   sin depender de tablas ni posicionamiento absoluto */
+.gallery__item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery__item:nth-child(6n + 1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.gallery__item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27, 58, 87, 0) 60%, rgba(27, 58, 87, 0.55) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.gallery__item:hover::after {
+  opacity: 1;
+}
+
+.gallery__item-caption {
+  position: absolute;
+  left: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 2;
+  color: var(--color-white);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.gallery__item:hover .gallery__item-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación de entrada al cambiar de sede (clase agregada por gallery.js) */
+.gallery__item.is-entering {
+  animation: galleryFadeIn var(--transition-slow) both;
+}
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mensaje de estado cuando no hay imágenes para mostrar (fallback controlado por JS) */
+.gallery__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-xl) 0;
+  color: var(--color-navy-soft);
+  font-size: var(--fs-md);
+}

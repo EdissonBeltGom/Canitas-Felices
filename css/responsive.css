@@ -1,0 +1,218 @@
+/* =====================================================================
+   CANITAS FELICES — responsive.css
+   Ajustes responsive por breakpoint. Se carga al final para poder
+   sobreescribir con claridad los estilos base de cada componente.
+
+   Breakpoints:
+   - Monitor grande: > 1200px (estilos base, ya cubiertos en cada archivo)
+   - Portátil:  1024px - 1200px
+   - Tablet:     768px - 1024px
+   - Celular:    hasta 767px
+   - Celular pequeño: hasta 380px
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   PORTÁTIL (<= 1200px)
+   --------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__container {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+
+  .footer__social {
+    grid-column: span 3;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   TABLET (<= 1024px)
+   --------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  :root {
+    --fs-4xl: 3rem;
+    --fs-3xl: 2.5rem;
+  }
+
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 180px;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__map {
+    min-height: 320px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   MENÚ MÓVIL (<= 900px) — activa el patrón de navbar hamburguesa
+   --------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__menu {
+    position: fixed;
+    inset: 0;
+    top: var(--navbar-height);
+    height: calc(100svh - var(--navbar-height));
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    background-color: var(--color-white);
+    padding: var(--space-xl) var(--container-padding);
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto;
+  }
+
+  .navbar__menu.is-open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navbar__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    width: 100%;
+  }
+
+  .navbar__link {
+    display: block;
+    font-size: var(--fs-lg);
+    color: var(--color-navy);
+    width: 100%;
+  }
+
+  .navbar__link::after {
+    display: none;
+  }
+
+  .navbar__whatsapp {
+    width: 100%;
+    justify-content: center;
+    padding-block: 0.85rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   CELULAR (<= 767px)
+   --------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  :root {
+    --space-2xl: 3.5rem;
+    --space-xl: 2.5rem;
+  }
+
+  section {
+    padding-block: var(--space-xl);
+  }
+
+  /* --- Hero --- */
+  .banner__content {
+    text-align: left;
+  }
+
+  .banner__title {
+    max-width: 22ch;
+  }
+
+  .banner__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .banner__actions .btn {
+    width: 100%;
+  }
+
+  .banner__scroll {
+    display: none;
+  }
+
+  /* --- Grids a una sola columna --- */
+  .why__grid,
+  .services__grid,
+  .locations__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-card {
+    min-height: 320px;
+  }
+
+  /* --- Galería --- */
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+  }
+
+  .gallery__item:nth-child(6n + 1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .gallery__tabs {
+    width: 100%;
+  }
+
+  .gallery__tab {
+    flex: 1;
+    text-align: center;
+    padding-inline: 0.75rem;
+  }
+
+  /* --- Footer --- */
+  .footer__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    text-align: left;
+  }
+
+  .footer__social {
+    grid-column: span 1;
+  }
+
+  /* --- Contacto --- */
+  .contact__form {
+    padding: var(--space-md);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   CELULAR PEQUEÑO (<= 380px)
+   --------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  :root {
+    --container-padding: 1.1rem;
+  }
+
+  .banner__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .why-card,
+  .testimonial-card {
+    padding: var(--space-md) var(--space-sm);
+  }
+}
