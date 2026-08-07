@@ -6,11 +6,15 @@
    ningún componente específico.
 
    Contiene:
-   1) Validación de campos en el cliente (sin cambios de comportamiento
-      respecto a la versión anterior en app.js).
+   1) Validación de campos en el cliente.
    2) Estados de carga (is-loading) y de éxito/error diferenciados.
-   3) Un punto único (submitToApi) preparado para la futura integración
-      con el backend — hoy solo simula la llamada de red.
+   3) Envío real vía Web3Forms (https://web3forms.com) — servicio
+      gratuito de formulario-a-correo, sin backend propio. La Access
+      Key es intencionalmente pública: Web3Forms la diseña para vivir
+      en código de cliente (funciona como un alias de la dirección de
+      correo destino, no como un secreto — ver su documentación oficial).
+      Cuando exista un backend propio (ADR-007, Sprint 8), solo esta
+      función (submitToApi) cambia — el resto del archivo no se toca.
    ===================================================================== */
 
 (function () {
@@ -24,40 +28,50 @@
 
   const NAMESPACE = (window.CanitasFelices = window.CanitasFelices || {});
 
+  // Configuración centralizada del envío — mismo criterio que CONFIG en
+  // whatsapp.js: un único lugar para actualizar si cambia el destino.
+  const WEB3FORMS_CONFIG = {
+    endpoint: 'https://api.web3forms.com/submit',
+    accessKey: '0bce8f52-8585-4dc4-bf92-84f479727f45',
+    subject: 'Nuevo mensaje desde el sitio web — Hogar Canitas Felices'
+  };
+
   /**
-   * Contrato previsto con el backend (ver docs/ARCHITECTURE.md §3.5 y
-   * docs/ADR.md, ADR-007: el framework de backend todavía no está
-   * decidido, pero el endpoint y el método ya están anticipados ahí).
-   * Cuando exista un backend real, SOLO esta función cambia — el resto
-   * del archivo (validación, estados de UI) no necesita tocarse.
+   * Envía el formulario a Web3Forms, que lo reenvía por correo a la
+   * dirección configurada en la cuenta de Web3Forms
+   * (contacto@hogarcanitasfelices.com).
    */
   function submitToApi(payload) {
-    // TODO(Sprint 7 o cuando exista backend): reemplazar por la llamada real.
-    // return fetch('/api/v1/contacto', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload)
-    // }).then(function (response) {
-    //   if (!response.ok) {
-    //     throw new Error('Error del servidor: ' + response.status);
-    //   }
-    //   return response.json();
-    // });
+    // Hook de prueba manual: permite forzar el estado de error desde la
+    // consola sin gastar cupo de envíos reales, ej.:
+    //   CanitasFelices.form.debugForceError = true
+    if (NAMESPACE.form && NAMESPACE.form.debugForceError) {
+      return Promise.reject(new Error('Error simulado (debugForceError activo)'));
+    }
 
-    const SIMULATED_DELAY = 900; // ms — solo para esta simulación de red.
-
-    return new Promise(function (resolve, reject) {
-      window.setTimeout(function () {
-        // Hook de prueba manual: permite forzar el estado de error desde
-        // la consola sin necesidad de un backend real, ej.:
-        //   CanitasFelices.form.debugForceError = true
-        if (NAMESPACE.form && NAMESPACE.form.debugForceError) {
-          reject(new Error('Error simulado (debugForceError activo)'));
-          return;
-        }
-        resolve({ ok: true });
-      }, SIMULATED_DELAY);
-    });
+    return fetch(WEB3FORMS_CONFIG.endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_CONFIG.accessKey,
+        subject: WEB3FORMS_CONFIG.subject,
+        name: payload.nombre,
+        email: payload.correo,
+        telefono: payload.telefono,
+        mensaje: payload.mensaje
+      })
+    })
+      .then(function (response) {
+        return response.json().then(function (data) {
+          if (!response.ok || !data.success) {
+            throw new Error(data.message || 'Error del servidor de Web3Forms');
+          }
+          return data;
+        });
+      });
   }
 
   function initContactForm() {
