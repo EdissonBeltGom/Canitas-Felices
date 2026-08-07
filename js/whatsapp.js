@@ -32,7 +32,7 @@
    * único lugar que hay que tocar.
    */
   const CONFIG = {
-    phone: '573002258378',
+    phone: '573228519039',
     messages: {
       default: 'Hola Hogar Canitas Felices, quisiera más información',
       visita: 'Hola Hogar Canitas Felices, quisiera agendar una visita',
