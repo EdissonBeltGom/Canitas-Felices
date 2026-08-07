@@ -94,7 +94,7 @@ Cada archivo CSS y JS tiene **una única responsabilidad**, sin excepciones:
 | `js/gallery.js` | Datos y renderizado de la galería por sede, integración con el lightbox |
 | `js/whatsapp.js` | Configuración centralizada, tooltip, visibilidad y tracking del botón flotante de WhatsApp |
 | `js/animations.js` | Observador de scroll para animaciones de entrada |
-| `js/form.js` | Formulario de contacto: validación, estados de carga/éxito/error, contrato preparado para API |
+| `js/form.js` | Formulario de contacto: validación, estados de carga/éxito/error, envío real vía Web3Forms a contacto@hogarcanitasfelices.com |
 | `js/faq.js` | Acordeón de preguntas frecuentes (en uso en el Home desde el ajuste post-Sprint 3) |
 | `js/app.js` | Inicialización general que no pertenece a ningún componente (hoy: solo el año dinámico del footer) |
 
