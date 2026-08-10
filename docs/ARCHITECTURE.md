@@ -85,6 +85,9 @@ Cada archivo CSS y JS tiene **una única responsabilidad**, sin excepciones:
 | `css/loader.css` | Pantalla de carga inicial |
 | `css/lightbox.css` | Modal de galería a pantalla completa |
 | `css/faq.css` | Acordeón de preguntas frecuentes (en uso en el Home desde el ajuste post-Sprint 3) |
+| `css/page-header.css` | Encabezado compartido de páginas internas (breadcrumb + título) — Sprint 4 |
+| `css/nosotros.css` | Estilos específicos de `nosotros.html` (historia, CTA) — reutiliza `.why-card`/`.why__grid` para valores y misión/visión |
+| `css/content-blocks.css` | Bloque imagen+texto reutilizable (`.media-text`), compartido por `nosotros.html` y `servicios.html` |
 | `css/responsive.css` | Ajustes por breakpoint (se carga al final, siempre sobreescribe) |
 | `js/utils.js` | Utilidades compartidas sin conocimiento de ningún componente (debounce, throttle, lock de scroll, focus trap) |
 | `js/loader.js` | Pantalla de carga inicial |
@@ -107,6 +110,8 @@ CanitasFelices/
 ├── CLAUDE.md
 ├── README.md
 ├── index.html
+├── nosotros.html               # Sprint 4 — páginas internas
+├── servicios.html
 ├── favicon.ico
 ├── docs/                      # Documentación técnica y funcional (este set de documentos)
 ├── css/
@@ -121,6 +126,9 @@ CanitasFelices/
 │   ├── loader.css
 │   ├── lightbox.css
 │   ├── faq.css                # En uso en index.html (sección #faq)
+│   ├── page-header.css        # Sprint 4 — encabezado compartido de páginas internas
+│   ├── content-blocks.css     # Sprint 4 — bloque imagen+texto compartido
+│   ├── nosotros.css           # Sprint 4 — específico de nosotros.html
 │   └── responsive.css
 ├── js/
 │   ├── utils.js                # Se carga primero: los demás módulos dependen de él

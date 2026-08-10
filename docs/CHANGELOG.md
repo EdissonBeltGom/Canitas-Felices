@@ -12,6 +12,15 @@ El formato sigue el estándar [Keep a Changelog](https://keepachangelog.com/es-E
 
 ### Added
 
+**Sprint 4 — Páginas internas del sitio estático (en progreso)**
+- `nosotros.html`: historia, misión, visión, valores (reutilizando `.why-card`/`.why__grid` de `cards.css` — sin duplicar el patrón) y CTA final. Contenido de referencia marcado explícitamente para revisión del negocio.
+- `servicios.html`: detalle de los 6 servicios (imagen + descripción extendida + lista de puntos), alternando el layout izquierda/derecha (`.media-text--reverse`).
+- `css/page-header.css`: encabezado compartido con breadcrumb, reutilizable en las páginas internas.
+- `css/content-blocks.css`: bloque imagen+texto (`.media-text`) extraído de `nosotros.css` para compartirse entre `nosotros.html` y `servicios.html` sin duplicación.
+- `css/nosotros.css`: estilos específicos de esta página (CTA, variante de 2 columnas para misión/visión).
+- **Fix de navbar**: en páginas internas sin hero de pantalla completa, la navbar transparente quedaba con texto blanco sobre fondo blanco (ilegible). Se agregó la clase `.navbar--no-hero`, que fuerza el estado sólido desde el inicio sin depender del scroll.
+- Navegación actualizada en las 3 páginas: "Nosotros" y "Servicios" (navbar y footer) ahora apuntan a sus páginas dedicadas en vez de a secciones ancla del Home.
+
 **Sprint 1 — Home estático**
 - Estructura completa de `index.html`: navbar, hero, sección "¿Por qué elegirnos?", servicios, sedes, galería, testimonios, contacto y footer.
 - Sistema de estilos separado por componente: `styles.css`, `navbar.css`, `banner.css`, `cards.css`, `gallery.css`, `contact.css`, `footer.css`, `animations.css`, `responsive.css`.
