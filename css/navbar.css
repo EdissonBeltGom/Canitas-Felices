@@ -27,7 +27,8 @@
 }
 
 /* --- Estado sólido, aplicado por JS cuando hay scroll --- */
-.navbar--scrolled {
+.navbar--scrolled,
+.navbar--no-hero {
   background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
@@ -49,7 +50,8 @@
   transition: width var(--transition-base), height var(--transition-base);
 }
 
-.navbar--scrolled .navbar__logo-img {
+.navbar--scrolled .navbar__logo-img,
+.navbar--no-hero .navbar__logo-img {
   width: 38px;
   height: 38px;
 }
@@ -62,7 +64,8 @@
   transition: color var(--transition-base);
 }
 
-.navbar--scrolled .navbar__logo-text {
+.navbar--scrolled .navbar__logo-text,
+.navbar--no-hero .navbar__logo-text {
   color: var(--color-navy);
 }
 
@@ -109,7 +112,8 @@
   color: var(--color-sky);
 }
 
-.navbar--scrolled .navbar__link.is-active {
+.navbar--scrolled .navbar__link.is-active,
+.navbar--no-hero .navbar__link.is-active {
   color: var(--color-sky-dark);
 }
 
@@ -117,11 +121,13 @@
   width: 100%;
 }
 
-.navbar--scrolled .navbar__link {
+.navbar--scrolled .navbar__link,
+.navbar--no-hero .navbar__link {
   color: var(--color-navy);
 }
 
-.navbar--scrolled .navbar__link:hover {
+.navbar--scrolled .navbar__link:hover,
+.navbar--no-hero .navbar__link:hover {
   color: var(--color-sky-dark);
 }
 
@@ -171,7 +177,8 @@
   transition: background-color var(--transition-base), transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.navbar--scrolled .navbar__toggle-bar {
+.navbar--scrolled .navbar__toggle-bar,
+.navbar--no-hero .navbar__toggle-bar {
   background-color: var(--color-navy);
 }
 
