@@ -1,0 +1,62 @@
+/* =====================================================================
+   CANITAS FELICES — content-blocks.css
+   Patrón "imagen + texto" en dos columnas, reutilizable en cualquier
+   página interna (nosotros.html, servicios.html, sedes.html). Evita
+   duplicar el mismo grid en el CSS de cada página (CLAUDE.md §2.5).
+   ===================================================================== */
+
+.media-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.media-text--reverse .media-text__image {
+  order: 2;
+}
+
+.media-text__image img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.media-text__text p {
+  color: var(--color-navy-soft);
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  margin-bottom: var(--space-md);
+}
+
+.media-text__text p:last-child {
+  margin-bottom: 0;
+}
+
+.media-text__list {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.media-text__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  color: var(--color-navy-soft);
+  font-size: var(--fs-sm);
+}
+
+.media-text__list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.55rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-sky);
+}

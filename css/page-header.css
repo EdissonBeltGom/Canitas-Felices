@@ -1,0 +1,57 @@
+/* =====================================================================
+   CANITAS FELICES — page-header.css
+   Encabezado compartido por las páginas internas del Sprint 4
+   (nosotros.html, servicios.html, sedes.html). No existía en la
+   arquitectura original — se agrega como componente propio, siguiendo
+   el mismo criterio que contact.css/loader.css/lightbox.css/faq.css.
+
+   No es un hero de pantalla completa como el del Home: es una banda
+   compacta pensada para páginas de contenido, con breadcrumb para
+   ubicar al usuario dentro del sitio.
+   ===================================================================== */
+
+.page-header {
+  padding-block: var(--space-xl);
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-sky-dark) 100%);
+  margin-top: var(--navbar-height);
+}
+
+.page-header__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--space-sm);
+}
+
+.page-header__breadcrumb a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--transition-fast);
+}
+
+.page-header__breadcrumb a:hover {
+  color: var(--color-white);
+}
+
+.page-header__breadcrumb-separator {
+  opacity: 0.6;
+}
+
+.page-header__breadcrumb-current {
+  color: var(--color-white);
+}
+
+.page-header__title {
+  color: var(--color-white);
+  font-size: clamp(var(--fs-2xl), 4vw, var(--fs-3xl));
+  max-width: 34ch;
+}
+
+.page-header__subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--fs-md);
+  max-width: 42ch;
+  margin-top: var(--space-sm);
+}
