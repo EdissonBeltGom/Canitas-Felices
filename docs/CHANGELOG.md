@@ -21,6 +21,7 @@ El formato sigue el estándar [Keep a Changelog](https://keepachangelog.com/es-E
 - **Fix de navbar**: en páginas internas sin hero de pantalla completa, la navbar transparente quedaba con texto blanco sobre fondo blanco (ilegible). Se agregó la clase `.navbar--no-hero`, que fuerza el estado sólido desde el inicio sin depender del scroll.
 - `sedes.html`: detalle de Sede La Pampa y Sede Campestre (`.media-text`/`.media-text--reverse`), con botones "Ver galería" hacia `index.html#galeria`. Fotos de La Pampa siguen siendo ilustraciones de referencia (pendientes de fotografía real).
 - Navegación actualizada en las 4 páginas: "Nosotros", "Servicios" e "Instalaciones" (navbar y footer) ahora apuntan a sus páginas dedicadas; los botones "Conocer instalaciones" del Home apuntan a `sedes.html#la-pampa`/`#campestre`.
+- Los 6 enlaces "Más información →" de las tarjetas de servicio del Home apuntaban a `#contacto` (se saltaban `servicios.html`) — corregidos para apuntar a la página dedicada.
 
 **Sprint 1 — Home estático**
 - Estructura completa de `index.html`: navbar, hero, sección "¿Por qué elegirnos?", servicios, sedes, galería, testimonios, contacto y footer.
