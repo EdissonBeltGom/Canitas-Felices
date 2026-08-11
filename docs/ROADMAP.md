@@ -11,7 +11,7 @@
 | 1 | Home estático | ✅ Completado | 2 semanas |
 | 2 | Documentación técnica y funcional | ✅ Completado | 1 semana |
 | 3 | Funcionalidades JavaScript e interactividad | ✅ Completado | 2 semanas |
-| 4 | Páginas internas del sitio estático | ⏳ Planificado | 2 semanas |
+| 4 | Páginas internas del sitio estático | ✅ Completado | 2 semanas |
 | 5 | Contenido real, formulario e integraciones | ⏳ Planificado | 2 semanas |
 | 6 | Preparación de la migración | ⏳ Planificado | 1.5 semanas |
 | 7 | Migración a Angular | ⏳ Planificado | 3 semanas |
@@ -128,7 +128,7 @@ El mismo Home del Sprint 1, visualmente idéntico, pero completamente interactiv
 
 ---
 
-## Sprint 4 — Páginas internas del sitio estático ⏳
+## Sprint 4 — Páginas internas del sitio estático ✅
 
 **Objetivo**
 Extender el sitio estático más allá del Home, construyendo las páginas internas necesarias para que el sitio sea un producto completo de cara al público: Nosotros, Servicios (detalle), Sedes (detalle por sede).

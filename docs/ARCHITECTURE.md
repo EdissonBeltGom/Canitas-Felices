@@ -112,6 +112,7 @@ CanitasFelices/
 ├── index.html
 ├── nosotros.html               # Sprint 4 — páginas internas
 ├── servicios.html
+├── sedes.html
 ├── favicon.ico
 ├── docs/                      # Documentación técnica y funcional (este set de documentos)
 ├── css/

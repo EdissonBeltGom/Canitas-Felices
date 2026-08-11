@@ -5,7 +5,7 @@
 **Sitio web corporativo para un hogar geriátrico — cuidado, calidez y confianza.**
 
 [![Estado](https://img.shields.io/badge/estado-en%20desarrollo-blue)]()
-[![Sprint](https://img.shields.io/badge/sprint%20actual-3%20%2F%209-blueviolet)]()
+[![Sprint](https://img.shields.io/badge/sprint%20actual-4%20%2F%209-blueviolet)]()
 [![Stack](https://img.shields.io/badge/stack-HTML5%20%7C%20CSS3%20%7C%20JS%20ES6-orange)]()
 [![Licencia](https://img.shields.io/badge/licencia-privada-lightgrey)]()
 
@@ -154,7 +154,7 @@ Luego visita `http://localhost:8080` en tu navegador.
 | 1 | Home estático | ✅ Completado |
 | 2 | Documentación técnica y funcional | ✅ Completado |
 | 3 | Funcionalidades JavaScript e interactividad | ✅ Completado |
-| 4 | Páginas internas del sitio estático | ⏳ Planificado |
+| 4 | Páginas internas del sitio estático | ✅ Completado |
 | 5 | Contenido real, formulario e integraciones | ⏳ Planificado |
 | 6 | Preparación de la migración | ⏳ Planificado |
 | 7 | Migración a Angular | ⏳ Planificado |

@@ -19,7 +19,8 @@ El formato sigue el estándar [Keep a Changelog](https://keepachangelog.com/es-E
 - `css/content-blocks.css`: bloque imagen+texto (`.media-text`) extraído de `nosotros.css` para compartirse entre `nosotros.html` y `servicios.html` sin duplicación.
 - `css/nosotros.css`: estilos específicos de esta página (CTA, variante de 2 columnas para misión/visión).
 - **Fix de navbar**: en páginas internas sin hero de pantalla completa, la navbar transparente quedaba con texto blanco sobre fondo blanco (ilegible). Se agregó la clase `.navbar--no-hero`, que fuerza el estado sólido desde el inicio sin depender del scroll.
-- Navegación actualizada en las 3 páginas: "Nosotros" y "Servicios" (navbar y footer) ahora apuntan a sus páginas dedicadas en vez de a secciones ancla del Home.
+- `sedes.html`: detalle de Sede La Pampa y Sede Campestre (`.media-text`/`.media-text--reverse`), con botones "Ver galería" hacia `index.html#galeria`. Fotos de La Pampa siguen siendo ilustraciones de referencia (pendientes de fotografía real).
+- Navegación actualizada en las 4 páginas: "Nosotros", "Servicios" e "Instalaciones" (navbar y footer) ahora apuntan a sus páginas dedicadas; los botones "Conocer instalaciones" del Home apuntan a `sedes.html#la-pampa`/`#campestre`.
 
 **Sprint 1 — Home estático**
 - Estructura completa de `index.html`: navbar, hero, sección "¿Por qué elegirnos?", servicios, sedes, galería, testimonios, contacto y footer.
