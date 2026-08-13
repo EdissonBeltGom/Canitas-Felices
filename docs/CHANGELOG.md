@@ -22,6 +22,7 @@ El formato sigue el estándar [Keep a Changelog](https://keepachangelog.com/es-E
 - `sedes.html`: detalle de Sede La Pampa y Sede Campestre (`.media-text`/`.media-text--reverse`), con botones "Ver galería" hacia `index.html#galeria`. Fotos de La Pampa siguen siendo ilustraciones de referencia (pendientes de fotografía real).
 - Navegación actualizada en las 4 páginas: "Nosotros", "Servicios" e "Instalaciones" (navbar y footer) ahora apuntan a sus páginas dedicadas; los botones "Conocer instalaciones" del Home apuntan a `sedes.html#la-pampa`/`#campestre`.
 - Los 6 enlaces "Más información →" de las tarjetas de servicio del Home apuntaban a `#contacto` (se saltaban `servicios.html`) — corregidos para apuntar a la página dedicada.
+- **CSS inline eliminado**: `nosotros.html`, `servicios.html` y `sedes.html` tenían 7 atributos `style=""` (violación de `CLAUDE.md` regla 2). Reemplazados por clases (`.service-detail--alt`, `.media-text__actions`), y `.about-cta`/`.about-cta__actions` movidos de `nosotros.css` a `content-blocks.css` por usarse en 3 páginas, no solo Nosotros.
 
 **Sprint 1 — Home estático**
 - Estructura completa de `index.html`: navbar, hero, sección "¿Por qué elegirnos?", servicios, sedes, galería, testimonios, contacto y footer.

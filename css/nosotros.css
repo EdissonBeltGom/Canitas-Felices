@@ -4,41 +4,14 @@
    otros archivos. Los bloques de "Valores" y "Misión y visión"
    reutilizan directamente .why__grid/.why-card (cards.css) — no se
    duplica ese patrón aquí, siguiendo CLAUDE.md §2.5 (no duplicar código).
-   ===================================================================== */
 
-/* Nota: el patrón "imagen + texto" (historia) vive en css/content-blocks.css
-   (.media-text), compartido con servicios.html y sedes.html. */
+   El CTA final (.about-cta) y los modificadores compartidos se movieron
+   a css/content-blocks.css por usarse también en servicios.html y
+   sedes.html — ver ese archivo.
+   ===================================================================== */
 
 /* --- Variante de 2 columnas para Misión y Visión, reutilizando .why-card --- */
 .mission-grid {
   grid-template-columns: repeat(2, 1fr);
   max-width: 50rem;
-}
-
-/* --- CTA final de la página --- */
-.about-cta {
-  background-color: var(--color-gray-light);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-lg);
-  text-align: center;
-}
-
-.about-cta__title {
-  font-size: var(--fs-2xl);
-  margin-bottom: var(--space-sm);
-}
-
-.about-cta__text {
-  color: var(--color-navy-soft);
-  font-size: var(--fs-md);
-  max-width: 42ch;
-  margin-inline: auto;
-  margin-bottom: var(--space-lg);
-}
-
-.about-cta__actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
 }
