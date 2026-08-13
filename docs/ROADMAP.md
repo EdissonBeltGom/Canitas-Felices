@@ -12,7 +12,7 @@
 | 2 | Documentación técnica y funcional | ✅ Completado | 1 semana |
 | 3 | Funcionalidades JavaScript e interactividad | ✅ Completado | 2 semanas |
 | 4 | Páginas internas del sitio estático | ✅ Completado | 2 semanas |
-| 5 | Contenido real, formulario e integraciones | ⏳ Planificado | 2 semanas |
+| 5 | Contenido real, formulario e integraciones | 🔄 En curso | 2 semanas |
 | 6 | Preparación de la migración | ⏳ Planificado | 1.5 semanas |
 | 7 | Migración a Angular | ⏳ Planificado | 3 semanas |
 | 8 | Backend (framework a definir) y CMS inicial | ⏳ Planificado | 4 semanas |
@@ -158,7 +158,7 @@ Un sitio estático multi-página, completo desde la perspectiva de un visitante,
 
 ---
 
-## Sprint 5 — Contenido real, formulario e integraciones ⏳
+## Sprint 5 — Contenido real, formulario e integraciones 🔄
 
 **Objetivo**
 Reemplazar el contenido e imágenes de referencia por contenido real de Hogar Canitas Felices, conectar el formulario de contacto a un servicio de envío funcional, e integrar Google Maps en reemplazo del marcador de posición.

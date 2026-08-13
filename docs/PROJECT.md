@@ -6,7 +6,7 @@
 |---|---|
 | Proyecto | Hogar Canitas Felices |
 | Tipo | Sitio web corporativo → evolución a plataforma con CMS |
-| Estado actual | Sprint 4 completado (páginas internas del sitio estático) |
+| Estado actual | Sprint 5 en curso (contenido real, formulario e integraciones) |
 | Stack objetivo final | Angular + backend por definir (ver sección 10) + panel administrativo |
 | Última actualización | Cierre del Sprint 4 |
 | Propietario del documento | Equipo de arquitectura del proyecto |
